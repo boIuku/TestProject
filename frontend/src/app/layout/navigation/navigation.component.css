@@ -1,0 +1,15 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.spacer2 {
+  margin:  auto;
+  padding-top: 0 auto;
+  text-indent: 20px;
+  padding-right: 40px;
+}
+
+#menu-item button {
+  display: block;
+  margin: 0 auto;
+}

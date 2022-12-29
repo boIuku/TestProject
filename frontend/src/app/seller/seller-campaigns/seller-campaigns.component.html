@@ -1,0 +1,38 @@
+<div *ngIf="isSellerCampaignLoaded" xmlns="http://www.w3.org/1999/html">
+  <div style="text-align: right">
+    <button mat-flat-button color="primary" routerLink="/profile/add">Add Campaign</button>
+  </div>
+
+  <h2>{{campaigns.length}} Campaigns</h2>
+
+  <mat-card class="campaign-card" *ngFor="let campaign of campaigns; let i = index">
+    <mat-card-header style="text-align: left">
+      <mat-card-title>Name: {{campaign.name}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content style="text-align: left">
+      <p><b>Keywords: </b> {{campaign.keywords}}</p>
+      <p><b>Bid: </b> {{campaign.bid}}<b> Fund: </b>{{campaign.campaignFund}}<b> Status: </b>{{campaign.status}}<b>
+        Town: </b>{{campaign.town}}<b> Radius: </b>{{campaign.radius}}</p>
+    </mat-card-content>
+
+    <div style="text-align: left">
+      <p *ngFor="let product of campaign.products; let c = index"><span style="font-weight: 500">{{product.name}}</span>: {{product.description}}
+        <button color="accent" mat-button (click)="deleteProduct(product.id, i, c)">
+          <mat-icon color="accent">clear</mat-icon>
+        </button>
+      </p>
+    </div>
+
+    <mat-card-actions align="end">
+      <button color="yellow" mat-button (click)="openEditDialog(campaign)">
+        <mat-icon color="yellow">update</mat-icon>
+        Update Campaign
+      </button>
+      <button color="warn" mat-button (click)="removeCampaign(campaign, i)">
+        <mat-icon color="warn">delete</mat-icon>
+        Remove Campaign
+      </button>
+    </mat-card-actions>
+
+  </mat-card>
+</div>

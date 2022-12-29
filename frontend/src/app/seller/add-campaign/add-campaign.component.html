@@ -1,0 +1,64 @@
+<div>
+  <div style="text-align: right">
+    <button mat-flat-button color="primary" routerLink="/profile">My Campaigns</button>
+  </div>
+
+  <h2>Create Campaign</h2>
+  <form [formGroup]="campaignForm">
+
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput
+             formControlName="name">
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Keywords</mat-label>
+      <input matInput
+             formControlName="keywords"
+             [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Bid</mat-label>
+      <input matInput
+             formControlName="bid">
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Campaign Fund</mat-label>
+      <input matInput
+             formControlName="campaignFund">
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Status On/Off</mat-label>
+      <mat-select formControlName="status">
+        <mat-option value="true"> On </mat-option>
+        <mat-option value="false"> Off </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Town</mat-label>
+      <mat-select formControlName="town">
+        <mat-option value="Warsaw"> Warsaw </mat-option>
+        <mat-option value="London"> London </mat-option>
+        <mat-option value="Paris"> Paris </mat-option>
+        <mat-option value="Madrid"> Madrid </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Radius (km)</mat-label>
+      <input matInput
+             formControlName="radius">
+    </mat-form-field>
+
+    <div style="text-align: right">
+      <button mat-flat-button color="primary" [disabled]="campaignForm.invalid" (click)="submit()">
+        Create Campaign
+      </button>
+    </div>
+
+  </form>
+</div>

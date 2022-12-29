@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+  <span routerLink="/main" style="cursor: pointer;margin-left: 20px;">MyCampaigns</span>
+
+  <span class="spacer"></span>
+
+  <button *ngIf="!isLoggedIn" matTooltip="Login" routerLink="/login" mat-icon-button class="example-icon favorite-icon">
+    <mat-icon>login</mat-icon>
+  </button>
+
+  <h3 class="spacer2" *ngIf="isDataLoaded"><b>Seller Name: </b>{{this.seller.name!}} {{this.seller.surname!}}  </h3>
+
+  <button mat-raised-button routerLink="/profile">Add Campaigns</button>
+</mat-toolbar>

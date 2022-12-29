@@ -1,0 +1,24 @@
+<div *ngIf="isSellerDataLoaded" class="user-profile">
+
+  <h1>Profile</h1>
+  <div style="text-align: right">
+    <button mat-flat-button color="primary" (click)="openEditDialog()">Edit Info</button>
+  </div>
+
+  <div style="padding-top: 2rem" class="row">
+
+    <div class="col" style="text-align: left">
+
+      <h2>Name: {{seller.name}}</h2>
+
+      <h3 style="font-style: italic">Surname: {{seller.surname}}</h3>
+      <h3 style="font-style: italic">Emerald Fund: {{seller.emeraldFund}}</h3>
+    </div>
+
+    <mat-divider style="margin: 2rem 0"></mat-divider>
+
+    <router-outlet></router-outlet>
+
+  </div>
+
+</div>

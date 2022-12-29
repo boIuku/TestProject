@@ -1,0 +1,21 @@
+<div *ngIf="isPostsLoaded && isUserDataLoaded" class="index-page">
+  <h2>Campaigns: </h2>
+  <mat-card class="post-card" *ngFor="let campaign of campaigns; let i = index">
+    <mat-card-header style="text-align: left">
+      <mat-card-title><b>Name: </b>{{campaign.name}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p><b>Keywords: </b> {{campaign.keywords}}</p>
+      <p><b>Bid: </b> {{campaign.bid}}<b> Fund: </b>{{campaign.campaignFund}}<b> Status: </b>{{campaign.status}}<b> Town: </b>{{campaign.town}}<b> Radius: </b>{{campaign.radius}}</p>
+      <b> Products: </b>
+      <p *ngFor="let product of campaign.products">{{product.name}} {{product.description}}</p>
+    </mat-card-content>
+
+    <mat-form-field class="w-100">
+      <mat-label>Add products:</mat-label>
+      <input  (keyup.enter)="postProduct($any($event.target).value, campaign.id!, i)" matInput #name maxlength="128">
+      <mat-hint align="end">{{name.value.length}} / 128</mat-hint>
+    </mat-form-field>
+
+  </mat-card>
+</div>
